@@ -1,4 +1,4 @@
-# HPC Project
+# HPC Project (WIP)
 Image Recognition Neural Network Parallelization for High Performance Computing with GPU's Course. 
 
 The purpose of this project is to analyze multiple implemented solutions of the MNIST Classification problem, which is a fundamental machine learning task that involves recognizing handwritten digits (0-9) from a dataset of 70,000 grayscale images (28x28 pixels each). It serves as a benchmark for evaluating machine learning models. 
