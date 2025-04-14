@@ -11,6 +11,9 @@
 #define BATCH_SIZE 64
 #define NUM_CLASSES 10  // Digits 0-9
 
+#define train_amount 60000
+#define test_amount 10000
+
 // Timer function
 double get_time(clock_t start) {
     return (double)(clock() - start) / CLOCKS_PER_SEC;
@@ -19,11 +22,6 @@ double get_time(clock_t start) {
 // Allocate memory for a matrix
 double* allocateMatrix(int rows, int cols) {
     return (double*)malloc(rows * cols * sizeof(double));
-}
-
-// Free allocated matrix memory
-void freeMatrix(double* mat) {
-    free(mat);
 }
 
 // Activation functions
@@ -222,8 +220,8 @@ double* loadMNISTLabels(const char* filename, int numLabels) {
 
 // Free network memory
 void freeNetwork(NeuralNetwork* net) {
-    freeMatrix(net->W1);
-    freeMatrix(net->W2);
+    free(net->W1);
+    free(net->W2);
     free(net->b1);
     free(net->b2);
     free(net);
@@ -234,14 +232,14 @@ void freeNetwork(NeuralNetwork* net) {
 int main() {
     printf("MNIST Neural Network\n\n");
 
-    double* train_images = loadMNISTImages("data/train-images.idx3-ubyte", 60000);
-    double* train_labels = loadMNISTLabels("data/train-labels.idx1-ubyte", 60000);
-    double* test_images = loadMNISTImages("data/t10k-images.idx3-ubyte", 10000);
-    double* test_labels = loadMNISTLabels("data/t10k-labels.idx1-ubyte", 10000);
+    double* train_images = loadMNISTImages("data/train-images.idx3-ubyte", train_amount);
+    double* train_labels = loadMNISTLabels("data/train-labels.idx1-ubyte", train_amount);
+    double* test_images = loadMNISTImages("data/t10k-images.idx3-ubyte", test_amount);
+    double* test_labels = loadMNISTLabels("data/t10k-labels.idx1-ubyte", test_amount);
 
     NeuralNetwork* net = createNetwork();
-    train(net, train_images, train_labels, 60000);
-    evaluate(net, test_images, test_labels, 10000);
+    train(net, train_images, train_labels, train_amount);
+    evaluate(net, test_images, test_labels, test_amount);
 
     freeNetwork(net);
     return 0;
