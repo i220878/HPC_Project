@@ -522,10 +522,10 @@ void freeNetwork(NNInterface* nni) {
 int main() {
     printf("MNIST Neural Network\n\n");
 
-    double* train_images = loadMNISTImages("/home/woha/Desktop/HPC/Project V2/src/data/train-images.idx3-ubyte", train_amount);
-    double* train_labels = loadMNISTLabels("/home/woha/Desktop/HPC/Project V2/src/data/train-labels.idx1-ubyte", train_amount);
-    double* test_images = loadMNISTImages("/home/woha/Desktop/HPC/Project V2/src/data/t10k-images.idx3-ubyte", test_amount);
-    double* test_labels = loadMNISTLabels("/home/woha/Desktop/HPC/Project V2/src/data/t10k-labels.idx1-ubyte", test_amount);
+    double* train_images = loadMNISTImages("data/train-images.idx3-ubyte", train_amount);
+    double* train_labels = loadMNISTLabels("data/train-labels.idx1-ubyte", train_amount);
+    double* test_images = loadMNISTImages("data/t10k-images.idx3-ubyte", test_amount);
+    double* test_labels = loadMNISTLabels("data/t10k-labels.idx1-ubyte", test_amount);
 
     NNInterface* nni = createNetwork();
     train(nni, train_images, train_labels, train_amount, train_amount);
