@@ -17,3 +17,10 @@ Go to directory and run these commands:
 make
 gprof nn.exe gmon.out > analysis.txt
 ```
+
+## Steps to compile V2, V3, V4
+
+```bash
+nvcc -o run <filename>.cu
+./run
+```
