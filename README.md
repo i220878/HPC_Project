@@ -10,7 +10,7 @@ In this specific project, the same native (V1) algorithm will be implemented mul
 - GPU (V3): Optimized version of V2 which uses Launch Configuration, Occupancy, Communication Optimizations, and Memory Optimizations with focus on Memory Hierarchy
 - GPU (V4): Tensor Core version of V3
 
-## Steps to compile V1
+## Steps to compile and analyze V1
 
 Go to directory and run these commands:
 ```bash
@@ -18,9 +18,16 @@ make
 gprof nn.exe gmon.out > analysis.txt
 ```
 
-## Steps to compile V2, V3, V4
+## Steps to compile and run V2, V3, V4
 
 ```bash
 nvcc -o run <filename>.cu
+./run
+```
+
+## Steps to compile and run V5
+
+```bash
+nvc -acc -o run V5.c
 ./run
 ```
