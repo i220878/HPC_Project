@@ -25,7 +25,7 @@
 #define OUTPUT_SIZE 10
 #define LEARNING_RATE 0.01
 #define EPOCHS 3
-#define BATCH_SIZE 32
+#define BATCH_SIZE 64
 #define NUM_CLASSES 10  // Digits 0-9
 
 #define train_amount 60000
